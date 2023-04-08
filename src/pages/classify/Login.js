@@ -48,7 +48,7 @@ function Login() {
     } else {
       setError({
         error: true,
-        message: "Username or password is incorrect.",
+        message: "Password is incorrect.",
       });
     }
   };

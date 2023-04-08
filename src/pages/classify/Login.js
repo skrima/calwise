@@ -13,7 +13,7 @@ function Login() {
   });
   const [error, setError] = useState({
     error: false,
-    message: "",
+    color: "red",
   });
   const linkRef = useRef(null);
 
@@ -25,7 +25,6 @@ function Login() {
   }, [formDetails]);
 
   const formSubmit = (e) => {
-    const u = "calwise_admin";
     const p = "Metro$!7Y";
     e.preventDefault();
     if (!formDetails.username.trim()) {
@@ -42,11 +41,9 @@ function Login() {
       });
       return;
     }
-    if (
-      formDetails.username.toLowerCase().trim() === u &&
-      formDetails.password === p
-    ) {
+    if (formDetails.password === p) {
       sessionStorage.setItem("authorized", true);
+      sessionStorage.setItem("user", formDetails.username);
       linkRef.current.click();
     } else {
       setError({
@@ -58,7 +55,13 @@ function Login() {
 
   return (
     <div className="classify-login-container">
-      {error.error && <Error message={error.message} setError={setError} />}
+      {error.error && (
+        <Error
+          message={error.message}
+          setError={setError}
+          color={error.color}
+        />
+      )}
       <div className="classify-login-form-container">
         <form onSubmit={formSubmit} style={styles.form}>
           <h3 style={{ textAlign: "center" }}>LOGIN</h3>

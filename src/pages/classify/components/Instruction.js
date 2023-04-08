@@ -8,10 +8,12 @@ Pick the category that applies to the meal below.
 Note that a meal can have more than one category.
 
 - Non-vegetarian: Eat everything (constantly selected) 🥩
-- Vegetarian: Eat animal produce like eggs and milk but not the animal. 🥚
+- Vegetarian: Eat animal produce like eggs and milk but not the animal. e.g. 🥚
 - Vegan: Pure herbivores (Only eat plants). 🥬
 
-All vegan meals are vegetarian meals but not all vegetarian meals are vegan meals, e.g. eggs.
+* All vegan meals are vegetarian meals but not all vegetarian meals are vegan meals, e.g. eggs.
+
+* If a soup does not expressly contain an animal product, it remains a vegan dish. e.g. Vegetable soup, Oha soup, e.t.c.
 `;
   return (
     <div style={styles.container}>

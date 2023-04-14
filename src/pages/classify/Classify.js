@@ -191,7 +191,7 @@ function Classify() {
         </div>
       </div>
     );
-  else window.location = "/";
+  else window.location = "/classify/login";
 }
 
 const styles = Stylesheet.create({

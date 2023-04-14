@@ -83,7 +83,7 @@ function Login() {
             style={styles.input}
           />
           <Link
-            to={"/contribute"}
+            to={"/classify"}
             style={{
               position: "absolute",
               width: 0,

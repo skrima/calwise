@@ -2,7 +2,7 @@
     height: 40px;
     border-radius: 10px;
     border: none;
-    background-color: var(--primary_color);
+    background-color: var(--primary-color);
     color: white;
 }
 
@@ -37,12 +37,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--primary_color);
+    background-color: var(--primary-color);
 }
 
 .classify-contact {
     text-decoration: none;
-    color: var(--primary_color);
+    color: var(--primary-color);
 }
 .classify-contact:hover {
     text-decoration: underline;

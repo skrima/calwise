@@ -1,0 +1,45 @@
+.nav-link {
+    color: white;
+    font-size: small;
+    transition: var(--link-transition);
+}
+
+.nav-link:hover {
+    padding: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 20px;
+    background-color: var(--primary-transparent);
+}
+
+.nav-title {
+    color: white;
+}
+
+.nav-btn {
+    padding: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    font-size: small;
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-transparent);
+    color: white;
+}
+
+.nav-btn:active {
+    background-color: var(--primary-color);
+}
+
+.green-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.green-btn:active {
+    background-color: black
+}

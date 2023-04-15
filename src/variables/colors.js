@@ -4,6 +4,7 @@ export default {
   selected: "#1E1512",
   primary_transparent: "rgba(0,106,23, 0.5)",
   gray_light: "#F2F2F2",
+  gray_medium: "#A1A1A1",
   card_orange: "#FFA500",
   card_yellow: "#FFC107",
   card_green: "#7DBE31",
@@ -11,4 +12,5 @@ export default {
   card_blue: "#4D648D",
   card_red: "#FF5722",
   card_pink: "#FF6B6B",
+  black_variant: "#333333",
 };

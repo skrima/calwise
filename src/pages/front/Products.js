@@ -65,6 +65,7 @@ const styles = Stylesheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 20,
+    justifyContent: "center",
   },
   cropRect: {
     position: "absolute",

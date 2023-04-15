@@ -15,16 +15,14 @@ function ServiceCard({ title, Icon, desc, color }) {
 }
 
 const styles = Stylesheet.create({
-  container: {
-    marginRight: 20
-  },
   icon: {
     transform: "scale(2.3)"
   },
   desc: {
     color: "black",
     padding: 10,
-    textAlign: "justify"
+    textAlign: "justify",
+    width: 220
   }
 })
 

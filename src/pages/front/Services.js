@@ -64,6 +64,9 @@ const styles = Stylesheet.create({
     display: "flex",
     paddingTop: 10,
     paddingBottom: 10,
+    flexFlow: "row",
+    gap: 20,
+    justifyContent: "center",
   },
   cropRect: {
     position: "absolute",

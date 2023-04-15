@@ -1,0 +1,97 @@
+.signup-icon-container {
+    width: 32px;
+    height: 32px;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    box-shadow: var(--card-shadow);
+    position: relative;
+}
+
+.signup-icon-container:hover {
+    box-shadow: none;
+    background-color: var(--primary-variant-2);
+    color: white;
+}
+
+.signup-icon-container:active {
+    background-color: var(--primary-color);
+    transition: none;
+}
+
+.signup-icon {
+    z-index: 1;
+}
+
+.signup-icon-container::after {
+    content: "";
+    transition: none;
+    position: absolute;
+    left: 0;
+    height: 32px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    background-color: inherit;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    transition: var(--link-transition);
+    pointer-events: none;
+    width: 0;
+}
+
+.signup-icon-container:hover::after {
+    opacity: 1;
+    pointer-events: all;
+    width: 100px;
+    
+}
+
+.signup-icon-container-home:hover::after {
+    content: "Home";
+}
+
+.signup-icon-container-help:hover::after {
+    content: "Help";
+}
+
+.signup-icon-container-login:hover {
+    background-color: var(--gray-medium);
+}
+.signup-icon-container-login:active {
+    background-color: black;
+    transition: none;
+}
+.signup-icon-container-login::after {
+    right: 0;
+    left: unset;
+}
+.signup-icon-container-login:hover::after {
+    content: "Login";
+}
+
+.signup-form-btn {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-light);
+    color: black;
+    box-shadow: var(--card-shadow);
+}
+
+.signup-form-next-btn {
+    background-color: var(--primary-color);
+    color: white;
+}

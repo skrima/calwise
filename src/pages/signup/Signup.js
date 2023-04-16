@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Stylesheet from "reactjs-stylesheet";
 import signupBG from "../../assets/images/signup-bg.png";
 import { FaHome, FaQuestion } from "react-icons/fa";
@@ -12,12 +12,12 @@ import colors from "../../variables/colors";
 import ErrorDisplay from "../../components/ErrorDisplay";
 
 function Signup() {
-  const [pages, setPages] = useState([
-    { label: 1, first: true },
-    { label: 2 },
-    { label: 3 },
-    { label: 4 },
-    { label: 5 },
+  const [pages] = useState([
+    { label: 1, title: "Basic Information", first: true },
+    { label: 2, title: "Personal  Information" },
+    { label: 3, title: "Lifestyle and Activity" },
+    { label: 4, title: "Dietary Information" },
+    { label: 5, title: "Medical Information" },
   ]);
   const [currentPage, setCurrentPage] = useState(1);
   const [formData, setFormData] = useState({
@@ -26,6 +26,17 @@ function Signup() {
     email: "",
     password: "",
     confirmPassword: "",
+    age: "",
+    sex: "female",
+    height: "",
+    heightUnit: "cm",
+    weight: "",
+    weightUnit: "kg",
+    activity: "sedentary",
+    habits: [],
+    dietry: "non-vegetarian",
+    medicals: [],
+    goal: "lose",
   });
   const [disabled, setDisabled] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
@@ -78,7 +89,10 @@ function Signup() {
             >
               <FaHome className="signup-icon" />
             </Link>
-            <Link className="signup-icon-container signup-icon-container-help">
+            <Link
+              className="signup-icon-container signup-icon-container-help"
+              to="/help"
+            >
               <FaQuestion className="signup-icon" />
             </Link>
           </div>
@@ -102,7 +116,7 @@ function Signup() {
           ))}
         </div>
         <div style={styles.rightContentMain}>
-          <p>Basic Information</p>
+          <p>{pages[currentPage - 1].title}</p>
           {errorMessage && <ErrorDisplay message={errorMessage} />}
           <form style={styles.rightContentForm}>
             <Outlet
@@ -218,6 +232,17 @@ const styles = Stylesheet.create({
     flex: "100%",
     display: "flex",
     justifyContent: "space-between",
+  },
+  radio: {
+    position: "absolute",
+    width: 0,
+    height: 0,
+    overflow: "hidden",
+  },
+  radioContainer: {
+    display: "flex",
+    gap: 10,
+    flex: 0.5,
   },
 });
 

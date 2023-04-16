@@ -27,9 +27,11 @@ function Page1() {
       setErrorMessage("");
       setDisabled(false);
     }
-  }, [formData]);
+  }, [formData, setDisabled, setErrorMessage]);
 
-  setCurrentPage(1);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [setCurrentPage]);
   return (
     <>
       <label style={styles.label}>

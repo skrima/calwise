@@ -15,6 +15,11 @@ import SignupPage3 from "./pages/signup/Page3";
 import SignupPage4 from "./pages/signup/Page4";
 import SignupPage5 from "./pages/signup/Page5";
 import Dashboard from "./pages/dashboard/Dashboard";
+import TandC from "./pages/legal/TandC";
+import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
+import About from "./pages/about/About";
+import Help from "./pages/help/Help";
+import Connect from "./pages/contact/Connect";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +27,11 @@ root.render(
     <Routes>
       <Route path="/">
         <Route index element={<Front />} />
+        <Route path="about" element={<About />} />
+        <Route path="help" element={<Help />} />
+        <Route path="terms-and-conditions" element={<TandC />} />
+        <Route path="privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="connect" element={<Connect />} />
         <Route path="signup" element={<Signup />}>
           <Route index element={<SignupPage1 />} />
           <Route path="page2" element={<SignupPage2 />} />

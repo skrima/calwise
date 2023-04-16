@@ -49,7 +49,9 @@ function Nav({ calwise, services, products, testimonials }) {
       <Link className="nav-btn" to="login">
         LOGIN / SIGN UP
       </Link>
-      <Link className="nav-btn green-btn">CONNECT WITH US</Link>
+      <Link className="nav-btn green-btn" to="connect">
+        CONNECT WITH US
+      </Link>
     </div>
   );
 }

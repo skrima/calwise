@@ -95,3 +95,37 @@
     background-color: var(--primary-color);
     color: white;
 }
+
+.signup-form-radio-btn:checked + .signup-form-radio-label {
+    background-color: var(--selected-variant-1);
+    transition: var(--link-transition);
+    color: white;
+}
+
+.signup-form-radio-label {
+    padding: 10px;
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-light);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    min-width: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+
+
+.chicken-color {
+    color: #E6B70E;
+}
+
+.egg-color {
+    color: #CD853F;
+}
+
+.leaf-color {
+    color: #80B48B;
+}

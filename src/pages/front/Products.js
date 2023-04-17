@@ -66,7 +66,7 @@ const styles = Stylesheet.create({
   },
   cardsContainer: {
     marginTop: 100,
-    width: "100%",
+    width: "fit-content",
     display: "flex",
     overflowX: "auto",
     paddingTop: 10,

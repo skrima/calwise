@@ -15,10 +15,12 @@ function Products({ products }) {
       <div style={styles.cropRect} />
       <div style={styles.content}>
         <h4 style={styles.title}>OUR PRODUCTS</h4>
-        <div style={styles.cardsContainer}>
-          {productsCardData.map((data, index) => (
-            <ProductCard key={index} {...data} />
-          ))}
+        <div style={styles.cardsContainerContainer}>
+          <div style={styles.cardsContainer}>
+            {productsCardData.map((data, index) => (
+              <ProductCard key={index} {...data} />
+            ))}
+          </div>
         </div>
         <Link className="front-explore-btn" to="#">
           <p>Click to explore our products</p>
@@ -57,6 +59,11 @@ const styles = Stylesheet.create({
   title: {
     alignSelf: "center",
   },
+  cardsContainerContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+  },
   cardsContainer: {
     marginTop: 100,
     width: "100%",
@@ -65,7 +72,7 @@ const styles = Stylesheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 20,
-    justifyContent: "center",
+    justifyContent: "start",
   },
   cropRect: {
     position: "absolute",

@@ -72,6 +72,7 @@ function Page1() {
         Password
         <input
           value={formData.password}
+          type="password"
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, password: e.target.value }))
           }
@@ -83,6 +84,7 @@ function Page1() {
         Confirm Password
         <input
           value={formData.confirmPassword}
+          type="password"
           onChange={(e) =>
             setFormData((prev) => ({
               ...prev,

@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Classify from "./pages/classify/Classify";
@@ -20,6 +19,7 @@ import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
 import About from "./pages/about/About";
 import Help from "./pages/help/Help";
 import Connect from "./pages/contact/Connect";
+import Home from "./pages/dashboard/Home";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -44,7 +44,9 @@ root.render(
           <Route index element={<Classify />} />
           <Route path="login" element={<ClassifyLogin />} />
         </Route>
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route index element={<Home />} />
+        </Route>
       </Route>
     </Routes>
   </Router>

@@ -1,6 +1,5 @@
 import React from "react";
 import Stylesheet from "reactjs-stylesheet";
-import colors from "../../../variables/colors";
 
 function Instruction() {
   const text = `

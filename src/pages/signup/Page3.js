@@ -103,7 +103,6 @@ const myStyles = Stylesheet.create({
     width: "fit-content",
     minWidth: "fit-content",
     maxWidth: "fit-content",
-    cursor: "pointer",
   },
 });
 

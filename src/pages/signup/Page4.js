@@ -87,7 +87,6 @@ const myStyles = Stylesheet.create({
     minWidth: 200,
     maxWidth: "fit-content",
     height: 250,
-    cursor: "pointer",
     boxShadow: effects.card_shadow,
   },
   cardContainer: {

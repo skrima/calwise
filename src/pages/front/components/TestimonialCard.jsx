@@ -8,8 +8,7 @@ function TestimonialCard({ name, comment, image, bg, color, left, width }) {
     <div style={{ 
       ...styles.container, 
       backgroundColor: bg, color, 
-      alignSelf: left ? "flex-start" : "unset", 
-      alignSelf: !left ? "flex-end" : "unset", width,
+      alignSelf: left ? "flex-start" : "flex-end", width,
       borderRadius: left ? "0px 10px 10px 0px" : "10px 0px 0px 10px",
       flexFlow: left ? "row" : "row-reverse"
     }}>

@@ -1,22 +1,22 @@
-import React from 'react'
-import Stylesheet from 'reactjs-stylesheet'
-import logo from "../../../assets/images/dashboard-logo.png"
-import profileImage from "../../../assets/images/sample-profile-pic.png"
-import { AiOutlineMenu } from "react-icons/ai"
+import React from "react";
+import Stylesheet from "reactjs-stylesheet";
+import logo from "../../../assets/images/dashboard-logo.png";
+import profileImage from "../../../assets/images/sample-profile-pic.png";
+import { AiOutlineMenu } from "react-icons/ai";
 
 function Nav() {
   return (
-    <div style={{...styles.container}}>
+    <div style={{ ...styles.container }}>
       <div style={styles.logoContainer}>
-        <img src={logo} style={styles.logo} alt='' />
+        <img src={logo} style={styles.logo} alt="" />
       </div>
       <div style={styles.profileContainer}>
         <div style={styles.profileWhite} />
-        <img src={profileImage} style={styles.profilePic} alt='' />
+        <img src={profileImage} style={styles.profilePic} alt="" />
       </div>
       <AiOutlineMenu style={{ cursor: "pointer" }} />
     </div>
-  )
+  );
 }
 
 const styles = Stylesheet.create({
@@ -62,12 +62,12 @@ const styles = Stylesheet.create({
     left: 0,
     borderRadius: "inherit",
     border: "inherit",
-    borderColor: "white"
+    borderColor: "white",
   },
   profilePic: {
     width: "inherit",
     height: "inherit",
   },
-})
+});
 
-export default Nav
+export default Nav;

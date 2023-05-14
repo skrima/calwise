@@ -1,18 +1,18 @@
 .classify-btn {
-    width: 100px;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 1px 2px 3px #000;
-  }
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 1px 2px 3px #000;
+}
 
-  .classify-btn:hover {
-    background-color: rgb(228, 228, 228);
-  }
+.classify-btn:hover {
+  background-color: rgb(228, 228, 228);
+}
 
-  .classify-btn:active {
-    background-color: #006A17;
-    color: white;
-    box-shadow: none;
-  }
+.classify-btn:active {
+  background-color: #006a17;
+  color: white;
+  box-shadow: none;
+}

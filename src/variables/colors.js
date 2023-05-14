@@ -17,4 +17,9 @@ export default {
   black_variant: "#333333",
   egg_color: "#CD853F",
   leaf_color: "#80B48B",
+  chart_green: "#008000",
+  chart_red: "#FF0000",
+  chart_yellow: "#F1BE42",
+  light_red: "#E74C3C",
+  primary_light: "#009B22",
 };

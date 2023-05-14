@@ -1,28 +1,28 @@
 .front-services-card {
-    width: 220px;
-    height: 220px;
-    display: flex;
-    flex-flow: column;
-    padding: 20px;
-    padding-top: 50px;
-    white-space: nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    color: white;
-    gap: 50px;
-    border-radius: 10px;
-    box-shadow: var(--card-shadow);
-    cursor: pointer;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  flex-flow: column;
+  padding: 20px;
+  padding-top: 50px;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  gap: 50px;
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
 }
 
 .front-services-card:hover {
-    filter: brightness(110%);
-    transform: rotateY(10deg);
-    transform: rotateZ(1deg);
+  filter: brightness(110%);
+  transform: rotateY(10deg);
+  transform: rotateZ(1deg);
 }
 
 .front-services-card:active {
-    filter: unset;
-    transform: unset;
-    transform: unset;
+  filter: unset;
+  transform: unset;
+  transform: unset;
 }

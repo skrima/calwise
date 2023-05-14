@@ -1,16 +1,16 @@
 /* .get-started-btn --> Bottom.css */
 
 .front-testimonials-btn {
-    position: unset;
-    margin-top: 50px;
-    align-self: center;
+  position: unset;
+  margin-top: 50px;
+  align-self: center;
 }
 
 .front-testimonials-btn:hover {
-    background-color: var(--primary-variant-3-transparent);
+  background-color: var(--primary-variant-3-transparent);
 }
 
 .front-testimonials-btn:active {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }

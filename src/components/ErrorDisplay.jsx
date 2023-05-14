@@ -24,7 +24,7 @@ const myStyles = Stylesheet.create({
     backgroundColor: colors.primary_transparent,
     color: "white",
     position: "absolute",
-    pointerEvents: "none"
+    pointerEvents: "none",
   },
 });
 

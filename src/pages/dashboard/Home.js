@@ -15,17 +15,9 @@ import CalorieInfo from "./components/CalorieInfo";
 import workoutImage from "../../assets/images/wokout-image.png";
 import workoutText from "../../assets/images/workout-text.png";
 import BarChart from "./components/BarChart";
-import {
-  labels as barLabels,
-  monthBarEmpty,
-  monthBarFilled,
-} from "./data/bar-data";
-import {
-  labels as pieLabels,
-  consumedEmpty,
-  consumedFilled,
-} from "./data/pie-data";
 import PieChart from "./components/PieChart";
+import barData from "./data/bar-data";
+import pieData from "./data/pie-data";
 import colors from "../../variables/colors";
 
 function Home() {
@@ -43,79 +35,109 @@ function Home() {
   const [confirmationMessage, setConfirmationMessage] = useState(
     "Should I remove this from your daily calorie intake?"
   );
+
+  class PieController {
+    constructor(labels, limit, consumed, change) {
+      this.labels = labels;
+      this.limit = limit;
+      this.consumedArr = [];
+      this.changeArr = [];
+      this.consumed = consumed;
+      this.change = change;
+      this.exceeded = change + consumed > limit;
+    }
+
+    changeArrFtn() {
+      const changeArr = [];
+      if (!this.exceeded) {
+        changeArr.push(this.consumed);
+        changeArr.push(this.change);
+        changeArr.push(this.limit - this.change - this.consumed);
+      } else {
+        let consumed =
+          this.consumed - (this.consumed + this.change - this.limit);
+        changeArr.push(consumed >= 0 ? consumed : 0);
+        changeArr.push(this.change);
+        let limit = this.limit - this.change - this.consumed;
+        limit = limit >= 0 ? limit : 0;
+        changeArr.push(limit);
+      }
+      return changeArr;
+    }
+
+    consumedArrFtn() {
+      const consumedArr = [];
+      consumedArr.push(this.consumed);
+      if (this.limit > this.consumed)
+        consumedArr.push(this.limit - this.consumed);
+      else consumedArr.push(0);
+      return consumedArr;
+    }
+
+    data() {
+      return {
+        labels: this.labels,
+        limit: this.limit,
+        consumedArr: this.consumedArrFtn(),
+        changeArr: this.changeArrFtn(),
+        consumed: this.consumed,
+        change: this.change,
+        exceeded: this.exceeded,
+      };
+    }
+  }
+
+  class BarController {
+    constructor(labels, limit, values) {
+      this.labels = labels;
+      this.limit = limit;
+      this.values = values;
+    }
+
+    data() {
+      return {
+        labels: this.labels,
+        limit: this.limit,
+        data: this.values,
+      };
+    }
+  }
+
+  const pieTransform = new PieController(
+    pieData.labels,
+    pieData.pieData.limit,
+    pieData.pieData.consumed,
+    pieData.pieData.change
+  ).data();
+  const barTransform = new BarController(
+    barData.labels,
+    barData.barData.limit,
+    barData.barData.data
+  ).data();
+
+  const [barChartRange, setBarChartRange] = useState("week");
   const [barChartData, setBarChartData] = useState({
-    labels: barLabels,
+    labels: barTransform.labels,
     datasets: [
       {
         label: "Calories Consumed",
-        data: !PRODUCTION ? monthBarFilled.data : [],
-        backgroundColor: !PRODUCTION
-          ? monthBarFilled.data?.map((cal) => {
-              if (cal > monthBarFilled.limit) return colors.chart_red;
-              return colors.chart_green;
-            })
-          : [],
+        data: barTransform.data,
+        backgroundColor: barTransform.data?.map((cal) => {
+          if (cal > barTransform.limit) return colors.chart_red;
+          return colors.chart_green;
+        }),
         width: 20,
       },
     ],
   });
-  const [barChartRange, setBarChartRange] = useState("week");
-
-  const p = {
-        limit: consumedFilled.limit,
-        consumed: [
-          consumedFilled.consumed,
-          consumedFilled.consumed > consumedFilled.limit
-            ? consumedFilled.limit
-            : consumedFilled.limit - consumedFilled.consumed,
-        ],
-        change: [
-          consumedFilled.consumed -
-            (consumedFilled.limit -
-              (consumedFilled.consumed + consumedFilled.change) >=
-            0
-              ? 0
-              : Math.abs(
-                  consumedFilled.limit -
-                    (consumedFilled.consumed + consumedFilled.change)
-                )) >=
-          0
-            ? consumedFilled.consumed -
-              (consumedFilled.limit -
-                (consumedFilled.consumed + consumedFilled.change) >=
-              0
-                ? 0
-                : Math.abs(
-                    consumedFilled.limit -
-                      (consumedFilled.consumed + consumedFilled.change)
-                  ))
-            : 0,
-          consumedFilled.change + consumedFilled.consumed,
-          consumedFilled.limit -
-            (consumedFilled.consumed + consumedFilled.change) >=
-          0
-            ? consumedFilled.limit -
-              (consumedFilled.consumed + consumedFilled.change)
-            : 0,
-        ],
-        exceeded:
-          consumedFilled.consumed + consumedFilled.change >
-          consumedFilled.limit,
-        consumedValue: consumedFilled.consumed,
-        changeValue: consumedFilled.change,
-        exceededValue:
-          consumedFilled.consumed +
-          consumedFilled.change -
-          consumedFilled.limit,
-      };
 
   const [pieChartData, setPieChartData] = useState({
-    labels: pieLabels,
+    labels: pieTransform.labels,
     datasets: [
       {
         label: "Calories Consumed",
-        data: p.consumed,
-        backgroundColor: p.consumed?.map((_, i) => {
+        data: pieTransform.consumedArr,
+        backgroundColor: pieTransform.consumedArr.map((_, i) => {
           if (i === 0) return colors.chart_green;
           return "transparent";
         }),
@@ -124,18 +146,16 @@ function Home() {
   });
 
   const [pieChartFutureData, setPieChartFutureData] = useState({
-    labels: pieLabels,
+    labels: pieTransform.labels,
     datasets: [
       {
         label: "Calories Consumed",
-        data: p.change,
-        backgroundColor: !PRODUCTION
-          ? monthBarFilled.data?.map((_, i) => {
-              if (p.exceeded && i === 1) return colors.chart_red;
-              else if (i === 1) return colors.chart_yellow;
-              return "transparent";
-            })
-          : [],
+        data: pieTransform.changeArr,
+        backgroundColor: pieTransform.changeArr.map((_, i) => {
+          if (i === 1 && !pieTransform.exceeded) return colors.chart_yellow;
+          else if (i === 1 && pieTransform.exceeded) return colors.chart_red;
+          return "transparent";
+        }),
       },
     ],
   });
@@ -213,71 +233,34 @@ function Home() {
               <div>
                 <h5>{confirmationMessage}</h5>
               </div>
-              <button style={{...styles.confirmationBtn, backgroundColor: colors.primary_light}}>Yes</button>
-              <button style={{...styles.confirmationBtn, backgroundColor: colors.light_red}}>No</button>
+              <button
+                style={{
+                  ...styles.confirmationBtn,
+                  backgroundColor: colors.primary_light,
+                }}
+              >
+                Yes
+              </button>
+              <button
+                style={{
+                  ...styles.confirmationBtn,
+                  backgroundColor: colors.light_red,
+                }}
+              >
+                No
+              </button>
             </div>
           </div>
           <div style={styles.chartsContainer}>
-            <div className="graph-container">
-              <div
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  justifyContent: "space-between",
-                }}
-              >
-                <h5 style={{ alignSelf: "flex-start" }}>
-                  Daily Calorie Calculator
-                </h5>
-                <div style={styles.limitContainer}>
-                  <p style={{ fontSize: 12 }}>{p.limit}</p>
-                </div>
-              </div>
-              <PieChart data={pieChartData} futureData={pieChartFutureData} />
-              <ul style={styles.pieListContainer}>
-                <li style={styles.pieList}>
-                  <div
-                    style={{ ...styles.pieCircle, ...styles.pieCircleGreen }}
-                  />
-                  <p>Total Consumed - {p.consumedValue} Cal</p>
-                </li>
-                <li style={styles.pieList}>
-                  <div
-                    style={{ ...styles.pieCircle, ...styles.pieCircleYellow }}
-                  />
-                  <p>Expected Change - {p.changeValue} Cal</p>
-                </li>
-                {p.exceeded && (
-                  <li style={styles.pieList}>
-                    <div
-                      style={{ ...styles.pieCircle, ...styles.pieCircleRed }}
-                    />
-                    <p>Exceeded - {p.exceededValue} Cal</p>
-                  </li>
-                )}
-              </ul>
-            </div>
-            <div className="graph-container">
-              <div
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  justifyContent: "space-between",
-                }}
-              >
-                <h5 style={{ alignSelf: "flex-start" }}>Total Calories</h5>
-                <select
-                  style={styles.rangeSelect}
-                  value={barChartRange}
-                  onChange={(e) => setBarChartRange(e.target.value)}
-                >
-                  <option value="week">Week</option>
-                  <option value="month">Month</option>
-                  <option value="year">Year</option>
-                </select>
-              </div>
-              <BarChart data={barChartData} />
-            </div>
+            <PieChart
+              data={pieChartData}
+              futureData={pieChartFutureData}
+              transform={pieTransform}
+            />
+            <BarChart
+              data={barChartData}
+              range={{ barChartRange, setBarChartRange }}
+            />
           </div>
         </section>
         <section style={styles.rightPanel}>
@@ -482,53 +465,6 @@ const styles = Stylesheet.create({
     gap: 20,
   },
   pieChart: {},
-  rangeSelect: {
-    background: "#F7F7F7",
-    border: "0.5px solid #C1C1C1",
-    borderRadius: 4,
-    color: colors.chart_green,
-  },
-  pieListContainer: {
-    display: "flex",
-    flexFlow: "column",
-    gap: 12,
-    listStyle: "none",
-    alignSelf: "flex-start",
-  },
-  pieList: {
-    display: "flex",
-    gap: 10,
-    alignItems: "center",
-    fontSize: 12,
-    pointerEvents: "none",
-  },
-  pieCircle: {
-    borderRadius: 20,
-    width: 12,
-    height: 12,
-  },
-  pieCircleRed: {
-    backgroundColor: colors.chart_red,
-  },
-  pieCircleYellow: {
-    backgroundColor: colors.chart_yellow,
-  },
-  pieCircleGreen: {
-    backgroundColor: colors.chart_green,
-  },
-  limitContainer: {
-    padding: 5,
-    background: "#F7F7F7",
-    border: "0.5px solid #C1C1C1",
-    color: colors.chart_green,
-    borderRadius: 4,
-    width: "auto",
-    minWidth: 50,
-    height: 20,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
 });
 
 export default Home;

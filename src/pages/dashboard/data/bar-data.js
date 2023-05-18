@@ -1,4 +1,4 @@
-export const labels = [
+const labels = [
   "Today",
   "Yesterday",
   "2 Days Ago",
@@ -8,9 +8,12 @@ export const labels = [
   "6 Days Ago",
 ];
 
-export const monthBarEmpty = {};
-
-export const monthBarFilled = {
+const barData = {
   limit: 1000,
   data: [1000, 1200, 800, 700, 900, 1000, 750],
+};
+
+export default {
+  labels,
+  barData,
 };

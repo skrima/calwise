@@ -6,19 +6,19 @@ const activitiesData = [
     desc: "Sedentary (little or no exercise, desk job)",
   },
   {
-    label: "lightly active",
+    label: "light",
     desc: "Lightly active (light exercise or sports 1-3 days per week)",
   },
   {
-    label: "moderately active",
+    label: "moderate",
     desc: "Moderately active (moderate exercise or sports 3-5 days per week)",
   },
   {
-    label: "very active",
+    label: "very",
     desc: "Very active (hard exercise or sports 6-7 days per week)",
   },
   {
-    label: "extra active",
+    label: "extra",
     desc: "Extra active (very hard exercise or sports, physical job)",
   },
 ];

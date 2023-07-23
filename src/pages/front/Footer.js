@@ -80,7 +80,8 @@ function Footer() {
 
 const styles = Stylesheet.create({
   container: {
-    height: "100vh",
+    height: "auto",
+    minHeight: "100vh",
     backgroundColor: colors.gray_light,
     position: "relative",
     display: "flex",
@@ -99,11 +100,10 @@ const styles = Stylesheet.create({
     display: "flex",
     position: "relative",
     marginTop: "auto",
-    height: "auto",
+    height: 220,
     width: "100%",
     zIndex: 1,
     justifyContent: "center",
-    overflowY: "hidden",
   },
   logo: {
     height: 220,

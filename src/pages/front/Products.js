@@ -33,7 +33,7 @@ function Products({ products }) {
 
 const styles = Stylesheet.create({
   container: {
-    height: "100vh",
+    minHeight: "100vh",
     backgroundColor: "white",
     position: "relative",
     position: "relative",

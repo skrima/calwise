@@ -6,12 +6,13 @@
   padding: 10px;
   border-radius: 10px;
   height: 48px;
-  width: 200px;
+  min-width: 200px;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   color: black;
+  white-space: nowrap;
 }
 
 .get-started-btn:hover {

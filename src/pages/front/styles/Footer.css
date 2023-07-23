@@ -28,6 +28,9 @@
   width: 140px;
   margin-top: 10px;
 }
+.front-footer-btn:hover {
+  background-color: var(--primary-variant-2);
+}
 
 .front-copyright-text {
   margin-top: auto;
